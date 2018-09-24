@@ -1,0 +1,258 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang=en xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Vòng quay trái cây</title>
+<link rel="stylesheet" type="text/css" href="css/screen.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="css/daugianguoc.css" />
+</head>
+<body>
+<div id="wrapper">
+	<div id="daugianguoc">  		
+		<link href="css/xeng.css" rel="stylesheet" type="text/css" />
+		<audio id="audio_bg" autoplay="autoplay" loop="loop">
+			<source src="audio/ground.ogg" type="audio/ogg" />
+			Your browser does not support the audio element.
+		</audio>
+		<script>document.getElementById('audio_bg').volume="0.1";</script>
+		<div class="game_container">
+
+		<div class="top_frame">
+		</div>
+
+		<div class="bg_">
+			<table cellpadding="3" cellspacing="3">
+				<tr>
+					<td colspan="7">						
+						<div class="_input_ _left_">
+							<input type="text" id="earn"  value="0" disabled="disabled"/>
+						</div>
+									<a href="/coin/exchange_xu_gold" style="position:relative; top:13px"><img src="images/nap_gold_.png"></a>
+									
+						<div class="_input_ _right_">
+							<input type="text" id="xu" style="text-align:right; padding-right:8px" value="0" disabled="disabled"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="7">&nbsp;</td>
+				</tr>
+				<tr>
+					<td id="item_1" class="icon_"><span  class="icon_cam">&nbsp;</span></td>
+					<td id="item_2" class="icon_"><span  class="icon_chuong">&nbsp;</span></td>
+					<td id="item_3" class="icon_"><span  class="icon_barnho">&nbsp;</span></td>  
+					<td id="item_4" class="icon_"><span  class="icon_bar">&nbsp;</span></td>
+					<td id="item_5" class="icon_"><span  class="icon_tao">&nbsp;</span></td>
+					<td id="item_6" class="icon_"><span  class="icon_taonho">&nbsp;</span></td>
+					<td id="item_7" class="icon_"><span  class="icon_chanh">&nbsp;</span></td>
+				  </tr>
+				<tr>
+					<td id="item_24" class="icon_"><span  class="icon_chuongnho">&nbsp;</span></td>
+					<td colspan="5" rowspan="5" class="in" style="text-align:center">
+						<input type="button" class="_play_" id="run_game_button">
+					</td>
+					<td id="item_8" class="icon_"><span  class="icon_duahau">&nbsp;</span></td>
+				</tr>
+				<tr>
+					<td id="item_23" class="icon_"><span  class="icon_tao">&nbsp;</span></td>
+					<td id="item_9" class="icon_"><span  class="icon_duahaunho">&nbsp;</span></td>
+				</tr>
+				<tr>
+					<td id="item_22" class="icon_"><span  class="icon_die">&nbsp;</span></td>
+					<td id="item_10" class="icon_"><span  class="icon_reload">&nbsp;</span></td>
+				</tr>
+				<tr>
+					<td id="item_21" class="icon_"><span  class="icon_duanho">&nbsp;</span></td>
+					<td id="item_11" class="icon_"><span  class="icon_tao">&nbsp;</span></td>
+				</tr>
+				<tr>
+					<td id="item_20" class="icon_"><span  class="icon_dua">&nbsp;</span></td>
+					<td id="item_12" class="icon_"><span  class="icon_camnho">&nbsp;</span></td>
+				</tr>
+				<tr>
+					<td id="item_19" class="icon_"><span  class="icon_chanh">&nbsp;</span></td>
+					<td id="item_18" class="icon_"><span  class="icon_chanhnho">&nbsp;</span></td>
+					<td id="item_17" class="icon_"><span  class="icon_tao">&nbsp;</span></td>
+					<td id="item_16" class="icon_"><span  class="icon_777">&nbsp;</span></td>
+					<td id="item_15" class="icon_"><span  class="icon_777nho">&nbsp;</span></td>
+					<td id="item_14" class="icon_"><span  class="icon_chuong">&nbsp;</span></td>
+					<td id="item_13" class="icon_"><span  class="icon_cam">&nbsp;</span></td>
+				</tr>
+			</table>
+		</div>
+	<div class="_bg">
+</div>
+</div>
+<script>var iCount = 24;
+		var delayStopStep = 7;
+		var maxSpeed = 10;
+		var runTime = 3000;
+		var stopSpeed = iCount*delayStopStep+maxSpeed;
+		var iStart = Math.floor(Math.random()*iCount)+1;
+		var itvGame = null;
+		var maxSpeedDefault = maxSpeed;
+		var stopSpeedDefault = stopSpeed;
+		var maxStopSpeed = stopSpeedDefault+delayStopStep;
+		var kq = 0;
+		var stopFlag = false;
+		var earn = 0;
+		var balance = 0;
+		var changeSelect = false;
+		var runned = false;
+		var userXu = '0';
+		function gameRun()
+		{
+			if(iStart > 1)
+			{
+				$('.game_container #item_'+(iStart-1)).removeClass('hover');
+			}
+			else
+			{
+				$('.game_container #item_'+iCount).removeClass('hover');
+			}
+			$('.game_container #item_'+iStart).addClass('hover');
+			iStart++;
+			if(iStart > iCount)
+			{
+				iStart = 1;
+			}
+			if(stopFlag && iStart == kq)
+			{
+				stopFlag = false;
+				clearInterval(itvGame);
+				gameStop();
+			}
+		}
+		function getKq()
+		{
+			data = {};
+			var error = false;
+			$('.bid_xu').each(function(i)
+			{
+				if(parseInt($(this).val()) > 0)
+				{
+					error = false;
+					data['bid['+$(this).attr('val')+']'] = $(this).val();
+				}
+			});
+			$('.bid_xu').removeClass('red');disabledItem();
+			$('.game_container ._error').html('&nbsp;');
+			//clearInterval(reloadItv);
+			//reloadItv = setInterval(function(){reloadTop()}, 10000);
+			kq = 1;//data.pos;
+			stopSpeed = maxStopSpeed;
+			earn = 100;//parseInt(data.earn);
+			balance = 10000;//parseInt(data.balance);
+			userXu = 99000;//data.xu;
+			run();
+		}
+		function gameStop()
+		{
+			if(maxSpeed < stopSpeed && itvGame != null)
+			{
+				gameRun();
+				setTimeout('gameStop()', maxSpeed);
+				maxSpeed+=delayStopStep;
+			}
+			else
+			{
+				itvGame = null;
+				maxSpeed = maxSpeedDefault;
+				stopSpeed = stopSpeedDefault;
+				enableItem();
+				kq = 0;$('#earn').val(earn);
+				$('#xu').val(balance);
+				$('#price .gold').html(userXu);
+			}
+		}
+		function run()
+		{
+			if(itvGame == null)
+			{
+				runned = true;
+				gameRun();
+				itvGame = setInterval('gameRun()',maxSpeedDefault);
+				setTimeout(function(){stopFlag = true;}, runTime);
+			}
+		}
+		function getCost()
+		{
+			var cost = 0;
+			$('.bid_xu').each(function(){cost += parseInt($(this).val());});
+			return cost;
+		}
+		function disabledItem()
+		{
+			$('.bid_xu').attr('disabled', 'disabled');
+			$('#run_game_button').attr('disabled', 'disabled');
+			$('#run_game_button').addClass('hidess');
+			$('.bid_xu').removeClass('red');
+			var earn = parseInt($('#earn').val());
+			var x = parseInt($('#xu').val());
+			var cost = getCost();
+			if(!changeSelect && (earn+x-cost > 0))
+			{
+				$('#xu').val(earn+x-cost);
+			}
+			$('#earn').val(0);changeSelect = false;
+		}
+		function enableItem()
+		{
+			$('.bid_xu').removeAttr('disabled');
+			$('#run_game_button').removeAttr('disabled');
+			$('#run_game_button').removeClass('hidess');
+		}
+		$(document).ready(function()
+		{
+			$('#run_game_button').click(function(){
+				getKq();
+			});
+			$('#stop_game_button').click(function()
+			{
+				prepareStop();
+			});
+			$('.game_container #item_'+iStart).addClass('hover');
+			$('.bid_xu').val(0);
+			$('.bid_xu').change(function()
+			{
+				if(runned)
+				{
+					var val = $(this).attr('val');
+					$('.bid_xu').each(function()
+					{
+						if($(this).attr('val') != val)
+						{
+							$(this).val(0);
+						}
+					});
+					runned = false;
+				}
+				$('.game_container ._error').html('&nbsp;');
+				var cost = getCost();
+				$('#xu').val(earn+balance);
+				$('#earn').val(0);
+				changeSelect = true;
+				var total = balance + earn; 
+				total = 100000;
+				var l = total - cost;
+				if( l >= 0)
+				{
+					$('#xu').val(l);
+					$('.bid_xu').removeClass('red');
+				}
+				else
+				{
+					alert('Tài khoản của bạn không đủ Gold để thực hiện lượt chơi này');
+					$('.game_container ._error').html('Tài khoản của bạn không đủ Gold để thực hiện lượt chơi này');
+					$(this).val(0);
+				}
+			});
+			enableItem();
+			$('#earn').val(0);
+		});
+		</script>		
+    </div>
+</div>
+</html>

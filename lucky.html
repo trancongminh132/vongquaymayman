@@ -1,0 +1,62 @@
+﻿<html>
+	<head>
+		<script src="js/jquery.min.js"></script>		
+		<style>
+			#number {
+				border-radius: 8px 8px 8px 8px;
+				display: inline-block;
+				font-size: 600%;
+			}
+			#go{
+				cursor:pointer;
+			}
+		</style>
+		<script>
+			var changeto = 456;
+			
+			function slotmachine(id) {
+				var thisid = '#' + id;
+				var $obj = $(thisid);
+				$obj.css('opacity', '.3');
+				var original = $obj.text();
+			
+				var spin = function() {
+					return Math.floor(Math.random() * 10);
+				};
+			
+				var spinning = setInterval(function() {
+					$obj.text(function() {
+						var result = '';
+						for (var i = 0; i < original.length; i++) {
+							result += spin().toString();
+						}
+						return result;
+					});
+				}, 50);
+			
+				var done = setTimeout(function() {
+					clearInterval(spinning);
+					$obj.text(changeto).css('opacity', '1');
+				}, 1000);
+			}
+			
+			$('#go').live('click', function() {
+				//slotmachine('number');
+				jQuery({someValue: 0}).animate({someValue: 100}, {
+					duration: 1000,
+					easing:'swing', // can be anything
+					step: function() { // called on every step
+						// Update the element's text with rounded-up value:
+						$('#number').text(Math.ceil(this.someValue) + "%");
+					}
+				});
+			});
+		</script>
+	</head>
+	
+	<body>
+		<span id="number">123</span>
+		<br/>
+		<span id="go">Go!</span>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+.game_container 		{text-align:center; width: 990px; margin: 10px auto}
+.game_container td		{text-align: center; border-radius: 5px;-webkit-border-radius: 5px; -moz-border-radius: 5px; -moz-user-select: none; -webkit-user-select: none;}
+.game_container td.in	{border:none;}
+#kq						{text-align:center; padding: 5px; height:50px;}
+#run_game_button		{padding: 3px 10px;}
+.bid_xu					{font-size: 12px; padding: 2px; border: solid 1px #ccc}
+.red					{border: solid 1px red;}
+._bg					{background:url(../images/bg_.png) top left ; margin:0 auto; width:704px}
+.bg_					{background:url(../images/bg_1.jpg) top left no-repeat; width:524px; height:555px; margin:0 auto; z-index: 20; position: relative}
+.bg_ table				{width:450px; margin:0 auto;}
+.bg_ table td			{border:none; padding:0 !important;}
+.game_container span	{display:inline-block;}
+._bid_					{width:524px; margin:-1px auto 0px auto}
+._bid_ td				{padding:0 !important; text-align:center; font-size:16px; font-weight:bold}
+._error					{padding:8px 0px 16px 0px; text-align:center; font-weight:bold; color:#fff; font-size:14px}
+.td						{border:1px solid #333}
+._input_				{display:inline-block; width:149px; padding-top:30px}
+._input_ input			{background:#000 !important; padding:4px 0; color:#0CF; font-size:15px; width:80%; text-indent:8px; font-weight:bold;}
+._left_					{text-align:left;}
+._right_				{text-align:right;}
+._center_				{text-align:center; width: 140px;}
+.icon_cam				{background:url(../images/icon_all.png) top left no-repeat; background-position:-5px -351px; width:56px; height:56px;}
+.icon_camnho			{background:url(../images/icon_all.png) top left no-repeat; background-position:-62px -353px; width:56px; height:56px;}
+.icon_chanh				{background:url(../images/icon_all.png) top left no-repeat; background-position:-5px -4px; width:56px; height:56px;}
+.icon_chanhnho			{background:url(../images/icon_all.png) top left no-repeat; background-position:-62px -5px; width:56px; height:56px;}
+.icon_tao				{background:url(../images/icon_all.png) top left no-repeat; background-position:-5px -409px; width:56px; height:56px;}
+.icon_taonho			{background:url(../images/icon_all.png) top left no-repeat; background-position:-62px -409px; width:56px; height:56px;}
+.icon_bar				{background:url(../images/icon_all.png) top left no-repeat; background-position:-5px -235px; width:56px; height:56px;}
+.icon_barnho			{background:url(../images/icon_all.png) top left no-repeat; background-position:-62px -237px; width:56px; height:56px;}
+.icon_777				{background:url(../images/icon_all.png) top left no-repeat; background-position:-5px -177px; width:56px; height:56px;}
+.icon_777nho			{background:url(../images/icon_all.png) top left no-repeat; background-position:-62px -179px; width:56px; height:56px;}
+.icon_duahau			{background:url(../images/icon_all.png) top left no-repeat; background-position:-5px -121px; width:56px; height:56px;}
+.icon_duahaunho			{background:url(../images/icon_all.png) top left no-repeat; background-position:-62px -121px; width:56px; height:56px;}
+.icon_chuong			{background:url(../images/icon_all.png) top left no-repeat; background-position:-5px -294px; width:56px; height:56px;}
+.icon_chuongnho			{background:url(../images/icon_all.png) top left no-repeat; background-position:-62px -295px; width:56px; height:56px;}
+.icon_dua				{background:url(../images/icon_all.png) top left no-repeat; background-position:-5px -63px; width:56px; height:56px;}
+.icon_duanho			{background:url(../images/icon_all.png) top left no-repeat; background-position:-62px -63px; width:56px; height:56px;}
+.icon_reload			{background:url(../images/icon_all.png) top left no-repeat; background-position:-5px -468px; width:56px; height:56px;}
+.icon_die				{background:url(../images/icon_all.png) top left no-repeat; background-position:-61px -468px; width:56px; height:56px;}
+._play_					{background:url(../images/run_button.png) top left no-repeat; height:39px; width:108px; border:none !important; background-position:0px -40px; cursor:pointer}
+._play_.hidess			{background:url(../images/run_button.png) top left no-repeat; height:39px; width:108px;border:none !important}
+.hover					{background:url(../images/icon_hover.png) top left no-repeat !important; width:56px; height:56px}
+.icon_					{background:url(../images/icon.png) top left no-repeat; width:56px; height:56px}
